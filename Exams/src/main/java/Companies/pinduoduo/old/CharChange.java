@@ -33,7 +33,5 @@ public class CharChange {
             }
             return sum;
         }
-
-
     }
 }
