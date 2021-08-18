@@ -34,9 +34,30 @@ public class Taxi {
 
     }
 
-    static class Solution{
-
-
+    class Solution {
+        public int longestPalindrome(String s) {
+            char[] arr = s.toCharArray();
+            HashMap<Character,Integer> mp =new HashMap<>();
+            for(char c : arr){
+                if(mp.containsKey(c)){
+                    int tmp = mp.get(c);
+                    mp.put(c,tmp+1);
+                }else{
+                    mp.put(c,1);
+                }
+            }
+            int res = 0;
+            int max_odd = 0;
+            for(Map.Entry<Character,Integer> entry : mp.entrySet()){
+                if(mp.get(entry) % 2 ==0){
+                    res+= mp.get(entry);
+                }
+                else{
+                    max_odd = max_odd > mp.get(entry) ? max_odd : mp.get(entry) ;
+                }
+            }
+            return res+max_odd;
+        }
     }
 
 
